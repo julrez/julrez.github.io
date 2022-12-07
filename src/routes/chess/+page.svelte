@@ -6,7 +6,7 @@
 	import {onMount} from 'svelte';
 
 	// (TODO: not used in chess engine)
-	let boardArray;
+	let simpleBoard;
 
 	let gameInfo = {
 		"color": 0, // color of the player, 0=nothing, 1=white, 2=black
@@ -30,17 +30,13 @@
 
 	// from, to
 	let animations = [];
-
-	function convert_simple_to_engine_board()
-	{
-	}
 	
 	// color: (0=nothing, 1=white, 2=black), piece
 	function setup_board(color)
 	{
 		// TODO: rook and king has moved entry
 		if (color == 1) {
-			boardArray = [
+			simpleBoard = [
 				[2, "rook"], [2, "knight"], [2, "bishop"], [2, "queen"], [2, "king"], [2, "bishop"], [2, "knight"], [2, "rook"],
 				[2, "pawn"], [2, "pawn"], [2, "pawn"], [2, "pawn"], [2, "pawn"], [2, "pawn"], [2, "pawn"], [2, "pawn"],
 				[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""],
@@ -51,7 +47,7 @@
 				[1, "rook"], [1, "knight"], [1, "bishop"], [1, "queen"], [1, "king"], [1, "bishop"], [1, "knight"], [1, "rook"],
 			];
 		} else {
-			boardArray = [
+			simpleBoard = [
 				[1, "rook"], [1, "knight"], [1, "bishop"], [1, "king"], [1, "queen"], [1, "bishop"], [1, "knight"], [1, "rook"],
 				[1, "pawn"], [1, "pawn"], [1, "pawn"], [1, "pawn"], [1, "pawn"], [1, "pawn"], [1, "pawn"], [1, "pawn"],
 				[0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""], [0, ""],
@@ -67,8 +63,8 @@
 	// returns true on success, false on fail
 	function is_move_legal(color, from, to)
 	{
-		if (boardArray[from][0] != color
-				|| boardArray[to][0] == color
+		if (simpleBoard[from][0] != color
+				|| simpleBoard[to][0] == color
 				|| from == to) {
 			return false;
 		}
@@ -86,20 +82,20 @@
 		let distances = [toPos[0]-fromPos[0], toPos[1]-fromPos[1]];
 		let absDistances = [Math.abs(distances[0]), Math.abs(distances[1])];
 		let addition = Math.sign(distances[0])+Math.sign(distances[1])*8;
-		switch (boardArray[from][1]) {
+		switch (simpleBoard[from][1]) {
 			case "pawn":
 				if (distances[0] == 0) {
-					if (distances[1] == -1 && boardArray[to][0] == 0) {
+					if (distances[1] == -1 && simpleBoard[to][0] == 0) {
 						return true;
 					}
 					if (distances[1] == -2
 						&& (fromPos[1] == 1 || fromPos[1] == 6 )
-						&& boardArray[to][0] == 0) {
+						&& simpleBoard[to][0] == 0) {
 						return true;
 					}
 				}
 				if (absDistances[0] == 1) {
-					if (distances[1] == -1 && boardArray[to][0] != 0) {
+					if (distances[1] == -1 && simpleBoard[to][0] != 0) {
 						return true;
 					}
 				}
@@ -108,7 +104,7 @@
 				// is on same row?
 				if (Math.floor(from/8) == Math.floor(to/8)) {
 					for (let i = start+1; i < end; i+=1) {
-						if (boardArray[i][0] != 0) {
+						if (simpleBoard[i][0] != 0) {
 							return false;
 						}
 					}
@@ -117,7 +113,7 @@
 				// is on same column?
 				if (Math.floor(from%8) == Math.floor(to%8)) {
 					for (let i = start+8; i < end; i+=8) {
-						if (boardArray[i][0] != 0) {
+						if (simpleBoard[i][0] != 0) {
 							return false;
 						}
 					}
@@ -130,7 +126,7 @@
 					return false;
 				}
 				for (let i = from+addition; i != to; i+=addition) {
-					if (boardArray[i][0] != 0) {
+					if (simpleBoard[i][0] != 0) {
 						return false;
 					}
 				}
@@ -140,7 +136,7 @@
 					return false;
 				}
 				for (let i = from+addition; i != to; i+=addition) {
-					if (boardArray[i][0] != 0) {
+					if (simpleBoard[i][0] != 0) {
 						return false;
 					}
 				}
@@ -169,8 +165,8 @@
 	{
 		let from = move[0];
 		let to = move[1];
-		boardArray[to] = boardArray[from];
-		boardArray[from] = [0, ""];
+		simpleBoard[to] = simpleBoard[from];
+		simpleBoard[from] = [0, ""];
 		gameInfo.lastMove = [from, to];
 		// TODO: if en passant, if castling
 		// TODO: animations
@@ -199,21 +195,21 @@
 			let col = i % 8;
 			let row = Math.floor(i / 8);
 
-			if (boardArray[i][0] != color) {
+			if (simpleBoard[i][0] != color) {
 				continue;
 			}
-			switch (boardArray[i][1]) {
+			switch (simpleBoard[i][1]) {
 				case "pawn":
-					if (boardArray[i+8][0] == 0) {
+					if (simpleBoard[i+8][0] == 0) {
 						legalMoves.push([i, i+8]);
 					}
-					if (boardArray[i+8][0] == 0 && boardArray[i+16][0] == 0 && row == 1) {
+					if (simpleBoard[i+8][0] == 0 && simpleBoard[i+16][0] == 0 && row == 1) {
 						legalMoves.push([i, i+16]);
 					}
-					if (col != 0 && boardArray[i+8-1][0] == enemyColor) {
+					if (col != 0 && simpleBoard[i+8-1][0] == enemyColor) {
 						legalMoves.push([i, i+8-1]);
 					}
-					if (col != 7 && boardArray[i+8+1][0] == enemyColor) {
+					if (col != 7 && simpleBoard[i+8+1][0] == enemyColor) {
 						legalMoves.push([i, i+8+1]);
 					}
 					// TODO: en passant
@@ -228,60 +224,60 @@
 							}
 							let index = i-1-8+x+y*8;
 							if (index >= 0 && index < 64
-									&& boardArray[index][0] != color) {
+									&& simpleBoard[index][0] != color) {
 								legalMoves.push([i, index]);
 							}
 						}
 					}
 					break;
 				case "knight":
-					if (col > 1 && row < 7 && boardArray[i+8-2][0] != color) {
+					if (col > 1 && row < 7 && simpleBoard[i+8-2][0] != color) {
 						legalMoves.push([i, i+8-2]);
 					}
-					if (col < 6 && row < 7 && boardArray[i+8+2][0] != color) {
+					if (col < 6 && row < 7 && simpleBoard[i+8+2][0] != color) {
 						legalMoves.push([i, i+8+2]);
 					}
-					if (col < 6 && row > 0 && boardArray[i-8+2][0] != color) {
+					if (col < 6 && row > 0 && simpleBoard[i-8+2][0] != color) {
 						legalMoves.push([i, i-8+2]);
 					}
-					if (col > 1 && row > 7 && boardArray[i-8-2][0] != color) {
+					if (col > 1 && row > 7 && simpleBoard[i-8-2][0] != color) {
 						legalMoves.push([i, i-8-2]);
 					}
-					if (col < 7 && row < 6 && boardArray[i+16+1][0] != color) {
+					if (col < 7 && row < 6 && simpleBoard[i+16+1][0] != color) {
 						legalMoves.push([i, i+16+1]);
 					}
-					if (col > 0 && row < 6 && boardArray[i+16-1][0] != color) {
+					if (col > 0 && row < 6 && simpleBoard[i+16-1][0] != color) {
 						legalMoves.push([i, i+16-1]);
 					}
-					if (col < 7 && row > 1 && boardArray[i-16+1][0] != color) {
+					if (col < 7 && row > 1 && simpleBoard[i-16+1][0] != color) {
 						legalMoves.push([i, i-16+1]);
 					}
-					if (col > 0 && row > 1 && boardArray[i-16-1][0] != color) {
+					if (col > 0 && row > 1 && simpleBoard[i-16-1][0] != color) {
 						legalMoves.push([i, i-16-1]);
 					}
 					break;
 				case "bishop":
 					for (let x = col+1, y=row+1; x<8 && y<8; x++,y++) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col-1, y=row+1; x>-1 && y<8; x--,y++) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col+1, y=row-1; x<8 && y>-1; x++,y--) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col-1, y=row-1; x>-1 && y>-1; x--,y--) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
@@ -289,47 +285,47 @@
 				case "queen":
 					for (let x = col+1, y=row+1; x<8 && y<8; x++,y++) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col-1, y=row+1; x>-1 && y<8; x--,y++) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col+1, y=row-1; x<8 && y>-1; x++,y--) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let x = col-1, y=row-1; x>-1 && y>-1; x--,y--) {
 						let j = x+y*8;
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					// fallthrough
 				case "rook":
 					for (let j = col+1+row*8; j < 8+row*8; j+=1) {
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let j = col-1+row*8; j > row*8-1; j-=1) {
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let j = col+row*8+8; j < 7*8+1; j+=8) {
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
 					for (let j = col+row*8-8; j > -1; j-=8) {
-						let val = boardArray[j][0];
+						let val = simpleBoard[j][0];
 						if (val != color) legalMoves.push([i, j]);
 						if (val != 0) break;
 					}
@@ -408,13 +404,13 @@
 	function pieceOnClick(hit)
 	{
 		let num = parseInt(hit.target.id.slice(6, hit.target.id.length));
-		if (boardArray[num][0] != 0 && boardArray[num][0] == gameInfo.color) {
+		if (simpleBoard[num][0] != 0 && simpleBoard[num][0] == gameInfo.color) {
 			if (gameInfo.color != gameInfo.turn) {
 				return;
 			}
 			pieceSelected = num;
 			showPieces();
-			cursorImg = getPieceUrl(boardArray[num][0], boardArray[num][1]);
+			cursorImg = getPieceUrl(simpleBoard[num][0], simpleBoard[num][1]);
 		}
 	}
 
@@ -426,11 +422,6 @@
 				&& gameInfo.color == gameInfo.turn) {
 			let num = parseInt(elementId.slice(6, elementId.length));
 			if (is_move_legal(gameInfo.color, pieceSelected, num)) {
-				// TODO: is move legal?
-				/*
-				boardArray[num] = boardArray[pieceSelected];
-				boardArray[pieceSelected] = [0, ""];
-				*/
 				make_move([pieceSelected, num], gameInfo.color);
 			}
 		}
@@ -457,12 +448,10 @@
 	function make_piece_animation(from, to)
 	{
 		let element = document.createElement("img");
-		element.src = getPieceUrl(boardArray[to][0], boardArray[to][1]);
+		element.src = getPieceUrl(simpleBoard[to][0], simpleBoard[to][1]);
 		element.style = 'width: 10vmin; height: 10vmin;'
 			+ 'position: absolute; z-index: 1;'
 			+ 'pointer-events: none; user-select: none;';
-		// TODO: setInterval to remove object
-			console.log("mainbody");
 		document.getElementById("mainbody").appendChild(element);
 
 		animations.push([from, to]);
@@ -470,7 +459,8 @@
 		let timeAtStart = new Date().getTime();
 		let time = 600;
 		let delay = 5;
-		let id = setInterval(function() {
+		function make_piece_animation_inner_func()
+		{
 			const wh = Math.min(
 				Math.max(
 					document.documentElement.clientWidth || 0,
@@ -491,18 +481,22 @@
 			let col = startCol + t*(endCol-startCol);
 			let row = startRow + t*(endRow-startRow);
 
-			console.log("board");
 			let board = document.getElementById("chessboard");
 			let posx = board.getBoundingClientRect().left + col*pieceSize;
 			let posy = board.getBoundingClientRect().top + row*pieceSize;
 			element.style.left = posx + "px";
 			element.style.top = posy + "px";
+		}
+		make_piece_animation_inner_func();
+		let id = setInterval(function() {
 			if (new Date().getTime() - timeAtStart > time) {
 				clearInterval(id);
 				element.remove();
 				let index = animations.indexOf([from, to]);
 				animations.splice(index, 1);
 				showPieces();
+			} else {
+				make_piece_animation_inner_func();
 			}
 		}, delay);
 
@@ -518,7 +512,7 @@
 				}
 			}
 			let piece = "square"+i;
-			let url = getPieceUrl(boardArray[i][0], boardArray[i][1]);
+			let url = getPieceUrl(simpleBoard[i][0], simpleBoard[i][1]);
 			if (skip) {
 				url = 0;
 			}
@@ -532,11 +526,9 @@
 				squareColor = square2Color;
 			}
 			if (url != 0 && pieceSelected != i) {
-				console.log("piece");
 				document.getElementById(piece).style =
 					'background: url('+url+') no-repeat center/10vmin, ' + squareColor;
 			} else {
-				console.log("piece2");
 				document.getElementById(piece).style = 'background-color: ' + squareColor;
 			}
 		}
