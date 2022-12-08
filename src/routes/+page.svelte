@@ -9,6 +9,8 @@
 	<a href="/telltale">telltale</a>
 	<p>|</p>
 	<a href="/chess">chess</a>
+	<p>|</p>
+	<a href="/memory">memory</a>
 </nav>
 
 <div id="maindiv">
@@ -24,6 +26,9 @@
 	<h2>Chess but really bad</h2>
 	<p>Good luck against Math.random</p>
 	<a href="/chess">Link</a>
+	<h2>Memory</h2>
+	<p>Thing</p>
+	<a href="/memory">Link</a>
 </div>
 
 <style>

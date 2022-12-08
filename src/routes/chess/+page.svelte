@@ -203,7 +203,7 @@
 					if (simpleBoard[i+8][0] == 0) {
 						legalMoves.push([i, i+8]);
 					}
-					if (simpleBoard[i+8][0] == 0 && simpleBoard[i+16][0] == 0 && row == 1) {
+					if (row == 1 && simpleBoard[i+8][0] == 0 && simpleBoard[i+16][0] == 0) {
 						legalMoves.push([i, i+16]);
 					}
 					if (col != 0 && simpleBoard[i+8-1][0] == enemyColor) {
