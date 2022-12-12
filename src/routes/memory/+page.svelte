@@ -1,4 +1,5 @@
 <script>
+	let score = 0;
 	let images = [
 		"pieceset/bB.svg", "pieceset/bQ.svg", "pieceset/bK.svg", "pieceset/bN.svg",
 		"pieceset/bP.svg", "pieceset/bR.svg", "pieceset/wB.svg", "pieceset/wQ.svg",
@@ -72,6 +73,7 @@
 			}
 		}
 		if (completeCount == 16) {
+			score += 1;
 			flipcount = 0;
 			oldCard = -1;
 			isWaiting = true;
@@ -94,70 +96,96 @@
 	<title>Memory thing</title>
 </head>
 
-<main>
-  <div class="row">
-    {#each cards as card, i}
-      <div
-        on:click={() => {
-          flip(card);
-        }}
-        on:keypress={() => {
-          flip(card);
-        }}
-        class:flipped={card.flipped}
-        class="card"
-      >
-        <img class="front" src={card.img} alt="" />
-        <img class="back" src="front.webp" alt="" />
-      </div>
-    {/each}
-  </div>
-</main>
+<h1>Memory</h1>
+<div id="mainDiv">
+	<div id="paddingDiv">
+	</div>
+	<main>
+		<div class="row">
+			{#each cards as card, i}
+			<div
+				on:click={() => {flip(card);}}
+				on:keypress={() => { flip(card); }}
+				class:flipped={card.flipped}
+				class="card"
+			>
+				<img class="front" src={card.img} alt="" />
+				<img class="back" src="front.webp" alt="" />
+			</div>
+			{/each}
+		</div>
+	</main>
+	<div id="scoreDiv">
+		<p>Score: {score}</p>
+	</div>
+</div>
 
 <style>
-  main {
-    margin-top: 50px;
-    display: flex;
-    place-content: center;
-    place-items: center;
-  }
+	#mainDiv {
+		display: flex;
+		justify-content: center;
+	}
+	#scoreDiv {
+		margin: auto;
+		margin-top: 0;
+		flex: 1;
+	}
+	#scoreDiv p {
+		text-align: center;
+		font-size: 2em;
+	}
+	#paddingDiv {
+		margin: auto;
+		flex: 1;
+	}
+	h1 {
+		text-align: center;
+	}
+	main {
+		flex: 1;
+		margin: auto;
+		margin-top: 50px;
+		display: flex;
+		place-content: center;
+		place-items: center;
+	}
 
-  .row {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(4, 100px);
-  }
+	.row {
+		display: grid;
+		gap: 20px;
+		grid-template-columns: repeat(4, 100px);
+		grid-template-rows: repeat(4, 100px);
+	}
 
-  .card {
-    border: 1px solid black;
-    cursor: pointer;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-  }
+	.card {
+		border: 1px solid black;
+		cursor: pointer;
+		transition: transform 1s;
+		transform-style: preserve-3d;
+		width: 100%;
+		height: 100%;
+	}
 
-  .card.flipped {
-    transform: rotateY(180deg);
-  }
+	.card.flipped {
+		transform: rotateY(180deg);
+	}
 
-  .card .back {
-    transform: rotateY(0deg);
-  }
+	.card .back {
+		transform: rotateY(0deg);
+	}
 
-  .card .front {
-    transform: rotateY(180deg);
-  }
+	.card .front {
+		transform: rotateY(180deg);
+	}
 
-  .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    position: absolute;
-	pointer-events: none;
-	user-select: none;
-  }
+	.card img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+		position: absolute;
+		pointer-events: none;
+		user-select: none;
+	}
 </style>

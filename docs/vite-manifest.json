@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-ab0ea555.js",
+    "file": "_app/immutable/start-0b142917.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -69,14 +69,14 @@
     ]
   },
   "src/routes/memory/+page.svelte": {
-    "file": "_app/immutable/components/pages/memory/_page.svelte-b3a84866.js",
+    "file": "_app/immutable/components/pages/memory/_page.svelte-542c3322.js",
     "src": "src/routes/memory/+page.svelte",
     "isEntry": true,
     "imports": [
       "_index-e16f133d.js"
     ],
     "css": [
-      "_app/immutable/assets/_page-67e43769.css"
+      "_app/immutable/assets/_page-25c1bc03.css"
     ]
   },
   "src/routes/telltale/+page.svelte": {
@@ -167,7 +167,7 @@
     ]
   },
   ".svelte-kit/generated/nodes/5.js": {
-    "file": "_app/immutable/chunks/5-fd3496e1.js",
+    "file": "_app/immutable/chunks/5-1dba1434.js",
     "src": ".svelte-kit/generated/nodes/5.js",
     "isDynamicEntry": true,
     "imports": [
@@ -194,6 +194,10 @@
     "file": "_app/immutable/assets/_page-f2d7fe31.css",
     "src": "src/routes/+page.css"
   },
+  "src/routes/chess/+page.css": {
+    "file": "_app/immutable/assets/_page-9098d686.css",
+    "src": "src/routes/chess/+page.css"
+  },
   "src/routes/telltale/+page.css": {
     "file": "_app/immutable/assets/_page-31959b9b.css",
     "src": "src/routes/telltale/+page.css"
@@ -202,12 +206,8 @@
     "file": "_app/immutable/assets/_page-f173ae19.css",
     "src": "src/routes/clicker/+page.css"
   },
-  "src/routes/chess/+page.css": {
-    "file": "_app/immutable/assets/_page-9098d686.css",
-    "src": "src/routes/chess/+page.css"
-  },
   "src/routes/memory/+page.css": {
-    "file": "_app/immutable/assets/_page-67e43769.css",
+    "file": "_app/immutable/assets/_page-25c1bc03.css",
     "src": "src/routes/memory/+page.css"
   }
 }
