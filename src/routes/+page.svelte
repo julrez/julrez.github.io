@@ -3,12 +3,17 @@
 <main>
 	<div id="navbackground">
 		<nav>
-			<h2 id="name">julrez.github.io</h2>
-			<a href="#clicker">clicker</a>
-			<a href="#todo">todo</a>
-			<a href="#telltale">telltale</a>
-			<a href="#chess">chess</a>
-			<a href="#memory">memory</a>
+			<div id="navMainDiv">
+				<h2 id="name">julrez.github.io</h2>
+				<a href="#clicker">clicker</a>
+				<a href="#todo">todo</a>
+				<a href="#telltale">telltale</a>
+				<a href="#chess">chess</a>
+				<a href="#memory">memory</a>
+			</div>
+			<div id="aboutDiv">
+				<a href="#footer" id="aboutButton">about</a>
+			</div>
 		</nav>
 	</div>
 	<section id="clicker">
@@ -46,6 +51,13 @@
 			<p>Thing</p>
 		</article>
 	</section>
+	<footer id="footer">
+		<h2>About this website</h2>
+		<hr>
+		<article>
+			<p>This website shows a collection of websites I have done in school. All of the code can be found in the github repository.</p>
+		</article>
+	</footer>
 </main>
 
 <style>
@@ -74,41 +86,55 @@
 	article p {
 		color: #cccac2;
 	}
+	footer {
+		padding-top: 4em;
+		padding-left: 5em;
+		padding-bottom: 2em;
+	}
+	footer p {
+		color: #cccac2;
+	}
+	footer h2 {
+		color: #ffcc66;
+		font-size: 2em;
+		text-decoration: none;
+		padding: 0;
+		margin: 0;
+	}
 
 	section a {
 		color: #80bfff;
 		font-size: 2em;
 		text-decoration: none;
-		scroll-behavior: smooth;
 	}
 	section a:hover {
 		background-color: #80bfff;
 		color: #171b24;
 	}
-	section hr {
+
+	section hr, footer hr {
 		width: 40%;
 		margin-left: 0;
 		color: #8a919959;
 	}
 
-	nav a {
+	#navMainDiv > a {
 		color: #cccac2;
-		margin: auto;
 		text-decoration: none;
 		font-size: 1.1em;
+		margin: auto;
 	}
-	nav a:hover {
+	#navMainDiv > a:hover {
 		color: #1f2430;
 		background-color: #cccac2;
 	}
-	nav h2 {
+	#navMainDiv > h2 {
 		color: #ff6666;
 		align-self: flex-start;
 		margin-top: auto;
 	}
-	nav {
-		display: block;
-		display: flex;
+	#navMainDiv {
+		display: inline-flex;
 		width: 40%;
 		height: 2em;
 		justify-content: space-evenly;
@@ -121,4 +147,33 @@
 		left: 0;
 	}
 
+	#aboutDiv {
+		margin-left: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+		padding-right: 1em;
+	}
+	#aboutButton {
+		color: #ffcc66;
+		text-decoration: none;
+		font-size: 1.1em;
+	}
+	#aboutButton:hover {
+		background-color: #ffcc66;
+		color: #1f2430;
+	}
+	nav {
+		display: flex;
+	}
+
 </style>
+
+<script>
+	import {onMount} from 'svelte';
+
+	onMount(() => {
+		let html = document.getElementsByTagName("html")[0];
+		html.style= "scroll-behavior: smooth;";
+	});
+	
+</script>
