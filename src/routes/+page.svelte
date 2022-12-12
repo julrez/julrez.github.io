@@ -1,4 +1,4 @@
-<title>julrez webistes</title>
+<title>julrez.github.io</title>
 
 <main>
 	<div id="navbackground">
@@ -55,7 +55,7 @@
 		<h2>About this website</h2>
 		<hr>
 		<article>
-			<p>This website shows a collection of websites I have done in school. All of the code can be found in the github repository.</p>
+			<p>This website shows a collection of websites I have done in school. All of the code can be found in the <a href="https://github.com/julrez/julrez.github.io">github repository</a>.</p>
 		</article>
 	</footer>
 </main>
@@ -82,6 +82,9 @@
 	article {
 		padding-left: 2em;
 		width: 40%;
+	}
+	article a {
+		color: #87d96c
 	}
 	article p {
 		color: #cccac2;
