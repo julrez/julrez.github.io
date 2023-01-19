@@ -10,6 +10,7 @@
 				<a href="#telltale">telltale</a>
 				<a href="#chess">chess</a>
 				<a href="#memory">memory</a>
+				<a href="#chatbot">chatbot</a>
 			</div>
 			<div id="aboutDiv">
 				<a href="#footer" id="aboutButton">about</a>
@@ -51,11 +52,18 @@
 			<p>Thing</p>
 		</article>
 	</section>
+	<section id="chatbot">
+		<a href="/chatbot">Chatbot</a>
+		<hr>
+		<article>
+			<p>Chat with the bad npm eliza bot</p>
+		</article>
+	</section>
 	<footer id="footer">
 		<h2>About this website</h2>
 		<hr>
 		<article>
-			<p>This website shows a collection of websites I have done in school. All of the code can be found in the <a href="https://github.com/julrez/julrez.github.io">github repository</a>.</p>
+			<p>This website shows a collection of websites I have done in school. All of the code can be found in the <a href="https://github.com/julrez/julrez.github.io">github repository</a>. BTW you can click on the headers.</p>
 		</article>
 	</footer>
 </main>
