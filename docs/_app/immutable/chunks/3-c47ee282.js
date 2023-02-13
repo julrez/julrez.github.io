@@ -1,0 +1,1 @@
+import{default as t}from"../components/pages/chatbot/_page.svelte-15bcd837.js";export{t as component};

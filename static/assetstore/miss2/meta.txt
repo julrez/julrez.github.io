@@ -1,0 +1,6 @@
+vertices asset.obj
+video bocchi_spin.mp4
+greenscreen false
+lazycull true
+# line 1: vertices fileName 
+# line 2: image/video fileName

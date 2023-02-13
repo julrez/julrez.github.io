@@ -1,0 +1,6 @@
+vertices terrain.obj
+image grass.webp
+greenscreen false
+lazycull false
+# line 1: vertices fileName 
+# line 2: image/video fileName

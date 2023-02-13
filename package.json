@@ -16,6 +16,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"elizabot": "^0.0.3"
+		"elizabot": "^0.0.3",
+		"gl-matrix": "^3.4.3"
 	}
 }

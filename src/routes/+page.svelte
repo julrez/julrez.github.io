@@ -21,7 +21,7 @@
 		<a href="/clicker">Clicker</a>
 		<hr>
 		<article>
-			<p>math but epic</p>
+			<p>no</p>
 		</article>
 	</section>
 	<section id="todo">

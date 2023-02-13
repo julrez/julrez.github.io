@@ -1,0 +1,6 @@
+vertices asset.obj
+video cow.mp4
+greenscreen true
+lazycull true
+# line 1: vertices fileName 
+# line 2: image/video fileName
