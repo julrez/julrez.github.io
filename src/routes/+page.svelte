@@ -12,6 +12,7 @@
 				<a href="#memory">memory</a>
 				<a href="#chatbot">chatbot</a>
 				<a href="#search">search</a>
+				<a href="#blog">blog</a>
 			</div>
 			<div id="aboutDiv">
 				<a href="#footer" id="aboutButton">about</a>
@@ -65,6 +66,13 @@
 		<hr>
 		<article>
 			<p>External API test thing</p>
+		</article>
+	</section>
+	<section id="blog">
+		<a href="/blog">Blog</a>
+		<hr>
+		<article>
+			<p>Blog</p>
 		</article>
 	</section>
 	<footer id="footer">
