@@ -1,12 +1,15 @@
 <main>
 	<div id="top">
-		<h1 id="header">BLOG!</h1>
+		<div id="headerContainer">
+			<h1 id="header" class="pls">BLOG!</h1><h2 class="pls" id="header2">or something idk</h2>
+		</div>
 		<div id="long-hr" />
 	</div>
 
 	<div id="container">
 		<div id="left">
-			<p>Ordered by: date</p>
+			<p id="centertext">Ordered by: date</p>
+			<p id="centertext">Sorted by: TODO</p>
 		</div>
 		<div id="right">
 			<ul>
@@ -29,6 +32,16 @@
 </main>
 
 <style>
+	#headerContainer {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+	.pls {
+		display: inline;
+	}
+	#centertext {
+		text-align: center;
+	}
 	#container {
 		margin-top: 0;
 		display: grid;
@@ -37,7 +50,7 @@
 	}
 	#left {
 		height: 100%;
-		border-right: 2px solid #acb6bf8c;
+		border-right: 1rem solid #131721;
 	}
 	.tag {
 		color: #59c2ff;
@@ -61,18 +74,24 @@
 	#header {
 		color: #ff8f40;
 		margin-left: 1em;
+		display: inline;
+	}
+	#header2 {
+		color: #6c7380e6;
+		font-style: italic;
+		display: inline;
+		margin-left: calc(1ch * 0.5);
 	}
 	#long-hr {
 		width: 100%;
-		border-bottom: 2px solid #acb6bf8c;
+		border-bottom: 1rem solid #131721;
 	}
 	#short-hr {
 		position: absolute;
 		display: inline;
 		left: 0;
-		width: 30%;
-		border-bottom: 2px solid #acb6bf8c;
-		margin-left: 1em;
+		width: 100%;
+		border-bottom: 1rem solid #131721;
 		margin-top: 0.5em;
 	}
 	main {
@@ -113,7 +132,7 @@
 		cursor: pointer;
 	}
 	li {
-		margin-top: 1em;
+		margin-top: 2rem;
 	}
 	ul {
 		position: relative;

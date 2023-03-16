@@ -11,7 +11,6 @@ export async function load({fetch})
 		posts[i] = await import(`../../lib/posts/${name}.md`);
 	}
 	console.log(postFilenames);
-	const test = await import('../../lib/posts/test.md');
 	return {
 		postFilenames,
 		posts,
