@@ -353,10 +353,6 @@
     "file": "_app/immutable/assets/_page-b09b0b89.css",
     "src": "src/routes/+page.css"
   },
-  "src/routes/chatbot/+page.css": {
-    "file": "_app/immutable/assets/_page-c73364eb.css",
-    "src": "src/routes/chatbot/+page.css"
-  },
   "src/routes/blog/[id]/+page.css": {
     "file": "_app/immutable/assets/_page-da179ea6.css",
     "src": "src/routes/blog/[id]/+page.css"
@@ -369,6 +365,10 @@
     "file": "_app/immutable/assets/_page-50207896.css",
     "src": "src/routes/blog/+page.css"
   },
+  "src/routes/chatbot/+page.css": {
+    "file": "_app/immutable/assets/_page-c73364eb.css",
+    "src": "src/routes/chatbot/+page.css"
+  },
   "src/lib/posts/test.css": {
     "file": "_app/immutable/assets/test-d944c7a9.css",
     "src": "src/lib/posts/test.css"
@@ -377,12 +377,12 @@
     "file": "_app/immutable/assets/_page-9098d686.css",
     "src": "src/routes/chess/+page.css"
   },
-  "src/routes/clicker/+page.css": {
-    "file": "_app/immutable/assets/_page-a7d6d99c.css",
-    "src": "src/routes/clicker/+page.css"
-  },
   "src/routes/memory/+page.css": {
     "file": "_app/immutable/assets/_page-25c1bc03.css",
     "src": "src/routes/memory/+page.css"
+  },
+  "src/routes/clicker/+page.css": {
+    "file": "_app/immutable/assets/_page-a7d6d99c.css",
+    "src": "src/routes/clicker/+page.css"
   }
 }
