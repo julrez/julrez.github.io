@@ -6,6 +6,9 @@ h1 {
 	text-align: center;
 	color: #bfbdb6;
 }
+h2 {
+	color: #95e6cb;
+}
 hr {
 	width: 100%;
 	height: 0;
@@ -13,8 +16,6 @@ hr {
 	border: 0;
 	border-bottom: 0.3rem solid #131721;
 }
-main {
-	width: 50%;
-	margin: auto;
-
+code {
+	color: #bfbdb6;
 }

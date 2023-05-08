@@ -6,7 +6,11 @@
 		<p id="date">{date}</p>
 	</div>
 
-	<svelte:component this={post.default} />
+	<div id="postPostContainer">
+		<div id="postContainer">
+			<svelte:component this={post.default} />
+		</div>
+	</div>
 </main>
 
 <script>
@@ -29,6 +33,15 @@
 </script>
 
 <style>
+	#postPostContainer {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+	#postContainer {
+		width: 50%;
+		margin: auto;
+		padding-bottom: 10%;
+	}
 	p {
 		text-align: center;
 		color: #bfbdb6;
