@@ -423,5 +423,6 @@ I use a 3d summed area table which is a little bit more complex.
 The code for generating the cuboids for the empty voxels is very similar.
 
 <h2>Conclusion</h2>
+
 With this system I have a simple version of ray-tracing up and running.
 It can be improved further but it works for now.
