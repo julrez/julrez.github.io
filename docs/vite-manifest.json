@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-685aa235.js",
+    "file": "_app/immutable/start-7fdfe290.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -63,7 +63,7 @@
     ]
   },
   "src/routes/blog/[id]/+page.svelte": {
-    "file": "_app/immutable/components/pages/blog/_id_/_page.svelte-bf64ee07.js",
+    "file": "_app/immutable/components/pages/blog/_id_/_page.svelte-59a1e4ae.js",
     "src": "src/routes/blog/[id]/+page.svelte",
     "isEntry": true,
     "imports": [
@@ -164,13 +164,13 @@
     ]
   },
   "src/routes/blog/+page.js": {
-    "file": "_app/immutable/modules/pages/blog/_page.js-fd1d6cbd.js",
+    "file": "_app/immutable/modules/pages/blog/_page.js-e66191b3.js",
     "src": "src/routes/blog/+page.js",
     "isEntry": true,
     "imports": [
       "_preload-helper-9b728935.js",
       "_dynamic-import-helper-3549c6bf.js",
-      "__page-99bc0ed9.js"
+      "__page-3574aa51.js"
     ]
   },
   "_singletons-2968e37f.js": {
@@ -201,8 +201,8 @@
       "_singletons-2968e37f.js"
     ]
   },
-  "__page-99bc0ed9.js": {
-    "file": "_app/immutable/chunks/_page-99bc0ed9.js",
+  "__page-3574aa51.js": {
+    "file": "_app/immutable/chunks/_page-3574aa51.js",
     "imports": [
       "_preload-helper-9b728935.js",
       "_dynamic-import-helper-3549c6bf.js"
@@ -244,16 +244,16 @@
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-1ae9ceb8.js",
+    "file": "_app/immutable/chunks/3-bb965c80.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-99bc0ed9.js",
+      "__page-3574aa51.js",
       "src/routes/blog/+page.svelte"
     ]
   },
   ".svelte-kit/generated/nodes/4.js": {
-    "file": "_app/immutable/chunks/4-6959a4bf.js",
+    "file": "_app/immutable/chunks/4-d981507a.js",
     "src": ".svelte-kit/generated/nodes/4.js",
     "isDynamicEntry": true,
     "imports": [
@@ -352,7 +352,7 @@
     ]
   },
   "src/lib/posts/webgpu.md": {
-    "file": "_app/immutable/chunks/webgpu-f2ae3b27.js",
+    "file": "_app/immutable/chunks/webgpu-221d0b09.js",
     "src": "src/lib/posts/webgpu.md",
     "isDynamicEntry": true,
     "imports": [
@@ -363,36 +363,36 @@
     "file": "_app/immutable/assets/_page-b09b0b89.css",
     "src": "src/routes/+page.css"
   },
-  "src/routes/chess/+page.css": {
-    "file": "_app/immutable/assets/_page-9098d686.css",
-    "src": "src/routes/chess/+page.css"
-  },
   "src/routes/chatbot/+page.css": {
     "file": "_app/immutable/assets/_page-c73364eb.css",
     "src": "src/routes/chatbot/+page.css"
   },
-  "src/routes/blog/+page.css": {
-    "file": "_app/immutable/assets/_page-50207896.css",
-    "src": "src/routes/blog/+page.css"
+  "src/routes/clicker/+page.css": {
+    "file": "_app/immutable/assets/_page-a7d6d99c.css",
+    "src": "src/routes/clicker/+page.css"
   },
   "src/lib/posts/test.css": {
     "file": "_app/immutable/assets/test-d944c7a9.css",
     "src": "src/lib/posts/test.css"
   },
-  "src/routes/blog/[id]/+page.css": {
-    "file": "_app/immutable/assets/_page-8edf2ae4.css",
-    "src": "src/routes/blog/[id]/+page.css"
-  },
   "src/routes/memory/+page.css": {
     "file": "_app/immutable/assets/_page-25c1bc03.css",
     "src": "src/routes/memory/+page.css"
   },
+  "src/routes/chess/+page.css": {
+    "file": "_app/immutable/assets/_page-9098d686.css",
+    "src": "src/routes/chess/+page.css"
+  },
+  "src/routes/blog/+page.css": {
+    "file": "_app/immutable/assets/_page-50207896.css",
+    "src": "src/routes/blog/+page.css"
+  },
+  "src/routes/blog/[id]/+page.css": {
+    "file": "_app/immutable/assets/_page-8edf2ae4.css",
+    "src": "src/routes/blog/[id]/+page.css"
+  },
   "src/routes/telltale/+page.css": {
     "file": "_app/immutable/assets/_page-31959b9b.css",
     "src": "src/routes/telltale/+page.css"
-  },
-  "src/routes/clicker/+page.css": {
-    "file": "_app/immutable/assets/_page-a7d6d99c.css",
-    "src": "src/routes/clicker/+page.css"
   }
 }
