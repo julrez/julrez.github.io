@@ -290,7 +290,6 @@ void acceleration_area_calculate_df(uint16_t inax, uint16_t inay, uint16_t inaz)
     	sat[satIndex] = sum;
     }}}
 
-    // ...
 ```
 
 I use a summed area table to accelerate the empty cuboid generation since it allows for much
@@ -422,3 +421,7 @@ I use a 3d summed area table which is a little bit more complex.
 ```
 
 The code for generating the cuboids for the empty voxels is very similar.
+
+<h2>Conclusion</h2>
+With this system I have a simple version of ray-tracing up and running.
+It can be improved further but it works for now.
