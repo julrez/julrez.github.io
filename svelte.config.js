@@ -6,12 +6,6 @@ import {mdsvex} from 'mdsvex';
 const config = {
 	kit: {
 		adapter: adapter({assets:'docs',pages:'docs'}),
-		prerender: {
-			entries: [
-				'*',
-				'/blog/[id]',
-			],
-		},
 	},
 	extensions: ['.svelte', '.md'],
   	preprocess: [

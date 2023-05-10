@@ -1,7 +1,30 @@
+<div id="background"></div>
+{#if isArticle}
+<div id="articleMain">
+	<div id="top">
+		<div id="headerContainer">
+			<a id="headerA" href="/blog" onclick="window.location=window.location.pathname"><h1 id="header" class="pls">BLOG!</h1></a><h2 class="pls" id="header2">or something idk</h2>
+		</div>
+		<div id="long-hr" />
+	</div>
+	<h1 id="articleHeader">{title}</h1>
+	<div id="hr">
+	</div>
+	<div id="infoContainer">
+		<p id="date">{date}</p>
+	</div>
+
+	<div id="postPostContainer">
+		<div id="postContainer">
+			<svelte:component this={articleComponent} />
+		</div>
+	</div>
+</div>
+{:else}
 <main>
 	<div id="top">
 		<div id="headerContainer">
-			<h1 id="header" class="pls">BLOG!</h1><h2 class="pls" id="header2">or something idk</h2>
+			<a id="headerA" href="/blog" onclick="window.location=window.location.pathname"><h1 id="header" class="pls">BLOG!</h1></a><h2 class="pls" id="header2">or something idk</h2>
 		</div>
 		<div id="long-hr" />
 	</div>
@@ -15,7 +38,7 @@
 			<ul>
 			{#each posts as post}
 				<li>
-					<a class="title" href="/blog/{post.filename.replaceAll('/', '|')}">{post.title}</a>
+					<a class="title" on:click={on_click(post)}>{post.title}</a>
 					<p>Published: {post.date}</p>
 					<p class="no-nl">Tags:</p>
 					<span>
@@ -30,8 +53,22 @@
 		</div>
 	</div>
 </main>
+{/if}
 
 <style>
+	#background {
+		background-color: #0b0e14;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: -10;
+
+	}
+	#headerA {
+		text-decoration: none;
+	}
 	#headerContainer {
 		margin-top: 1em;
 		margin-bottom: 1em;
@@ -49,8 +86,13 @@
 		flex: 1 1 auto;
 	}
 	#left {
-		height: 100%;
 		border-right: 1rem solid #131721;
+		background-color: #0b0e14;
+		height: 100%;
+		padding-bottom: 0.4rem;
+	}
+	#right {
+		background-color: #0b0e14;
 	}
 	.tag {
 		color: #59c2ff;
@@ -100,8 +142,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
 		background-color: #0b0e14;
 	}
 
@@ -137,29 +179,96 @@
 	ul {
 		position: relative;
 	}
+	#articleMain {
+		background-color: #0b0e14;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	#postPostContainer {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+	#postContainer {
+		width: 50%;
+		margin: auto;
+		padding-bottom: 5rem;
+	}
+	#date {
+		text-align: center;
+		color: #acb6bf8c;
+	}
+	#infoContainer {
+		margin-bottom: 5rem;
+	}
+	#infoContainer p {
+		margin: 0;
+		margin-top: 0.2rem;
+		margin-bottom: 0.2rem;
+	}
+	#hr {
+		width: 50%;
+		margin: auto;
+		border-bottom: 0.5rem solid #131721;
+	}
+	#articleHeader {
+		color: #95e6cb;
+		text-align: center;
+	}
 </style>
 
 <script>
 	import {onMount} from 'svelte';
 	export let data;
 
+	function on_click(post) {
+		window.location.href += "?article="+post.filename.split('/').pop();
+	}
+
+	let title = "", date = "";
+
+	let articleComponent = undefined;
+
 	let newPosts = [];
 	let posts = [];
-	onMount(async() => {
-		newPosts.length = data.posts.length;
-		let finishedCount = 0;
-		for (let i = 0; i < data.posts.length; i++) {
-			const {title, date, tags} = data.posts[i].metadata;
-			newPosts[i] = {
-				"title": title,
-				"date": new Date(date),
-				"tags": tags.split(' '),
-				"filename": data.postFilenames[i],
-				"component": data.posts[i].default,
-			};
+
+	let urlParams = new URLSearchParams(window.location.search);
+	let articleParam = urlParams.get("article");
+	let isArticle = articleParam != null;
+	console.log(articleParam);
+
+	let selectedPost = undefined;
+	for (let i = 0; i < data.postFilenames.length; i++) {
+		if (data.postFilenames[i].endsWith(articleParam)) {
+			selectedPost = data.posts[i];
 		}
-		posts = sort_posts_by_date(newPosts);
-	});
+	}
+	if (selectedPost == undefined) {
+		isArticle = false;
+	}
+
+	if (!isArticle) {
+		onMount(async() => {
+			newPosts.length = data.posts.length;
+			let finishedCount = 0;
+			for (let i = 0; i < data.posts.length; i++) {
+				const {title, date, tags} = data.posts[i].metadata;
+				newPosts[i] = {
+					"title": title,
+					"date": new Date(date),
+					"tags": tags.split(' '),
+					"filename": data.postFilenames[i],
+					"component": data.posts[i].default,
+				};
+			}
+			posts = sort_posts_by_date(newPosts);
+		});
+	} else {
+		articleComponent = selectedPost.default;
+
+		title = selectedPost.metadata.title;
+		date = new Date(selectedPost.metadata.date)
+	}
 
 	function tagOnClick()
 	{
