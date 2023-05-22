@@ -1,0 +1,5 @@
+import{S as c,i as u,s as f,k as m,a as w,q as g,l as d,c as y,m as _,r as k,h as i,n as o,b as h,G as I,B as r}from"./index-e41cafb2.js";function b(p){let t,s,a,l;return{c(){t=m("link"),s=w(),a=m("p"),l=g(`In the last 2 weeks I have implemented an infinite world (altough with some bugs right now), loading
+in chunks as you move in the world and sending that to the GPU. Additionally, some simple UI has
+been implemeneted.`),this.h()},l(e){t=d(e,"LINK",{rel:!0,type:!0,href:!0}),s=y(e),a=d(e,"P",{});var n=_(a);l=k(n,`In the last 2 weeks I have implemented an infinite world (altough with some bugs right now), loading
+in chunks as you move in the world and sending that to the GPU. Additionally, some simple UI has
+been implemeneted.`),n.forEach(i),this.h()},h(){o(t,"rel","stylesheet"),o(t,"type","text/css"),o(t,"href","../blog.css")},m(e,n){h(e,t,n),h(e,s,n),h(e,a,n),I(a,l)},p:r,i:r,o:r,d(e){e&&i(t),e&&i(s),e&&i(a)}}}const x={title:"Final project update",date:"2023-05-22T07:36:00.000Z",tags:"final project"};class U extends c{constructor(t){super(),u(this,t,null,b,f,{})}}export{U as default,x as metadata};
